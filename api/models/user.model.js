@@ -9,19 +9,22 @@ const userSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
+      require: true,
       unique: true,
     },
     password: {
       type: String,
       required: true,
     },
+    profilePicture: {
+      type: String,
+      default: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/340px-Default_pfp.svg.png',
+    },
     isAdmin: {
       type: Boolean,
       default: false,
     },
-  },
-  { timestamps: true }
+  }, { timestamps: true }
 );
 
 const User = mongoose.model('User', userSchema);

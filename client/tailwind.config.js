@@ -1,4 +1,5 @@
 import flowbitePlugin from "flowbite/plugin";
+import tailwindScrollbar from 'tailwind-scrollbar';
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -6,12 +7,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     'node_modules/flowbite-react/lib/esm/**/*.js',
-    
+
   ],
   theme: {
     extend: {},
   },
   plugins: [
     flowbitePlugin,
+    tailwindScrollbar,
   ],
 }
