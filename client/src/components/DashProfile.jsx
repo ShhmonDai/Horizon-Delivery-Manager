@@ -185,7 +185,7 @@ export default function DashProfile() {
                             }}
                         />
                     )}
-                    <img src={imageFileUrl || currentUser.profilePicture} alt="user" className={`rounded-full w-full h-full border-4 border-gray-800 ${imageFileUploadProgress && imageFileUploadProgress < 100 && 'opacity-20'}`} />
+                    <img src={imageFileUrl || currentUser.profilePicture} alt="user" className={`rounded-full w-full h-full border-4 border-red-400 ${imageFileUploadProgress && imageFileUploadProgress < 100 && 'opacity-20'}`} />
                 </div>
 
 
@@ -194,17 +194,10 @@ export default function DashProfile() {
                     <TextInput color='gray' type='text' id='username' placeholder='username' defaultValue={currentUser.username} onChange={handleChange} />
                     <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange} />
                     <TextInput type='password' id='password' placeholder='password' autoComplete='password' onChange={handleChange} />
-                    <Button type='submit' gradientDuoTone="pinkToOrange" outline disabled={loading || imageFileUploading}>
+                    <Button type='submit' gradientDuoTone="pinkToOrange" disabled={loading || imageFileUploading}>
                         {loading || imageFileUploading ? 'Loading...' : 'Update'}
                     </Button>
 
-                    {
-                        currentUser.isAdmin && (
-                            <Link to={'/create-post'}>
-                                <Button type='button' gradientDuoTone='pinkToOrange' className='w-full'> Create a post</Button>
-                            </Link>
-                        )
-                    }
 
 
 

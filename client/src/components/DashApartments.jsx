@@ -138,8 +138,8 @@ export default function DashApartments() {
 
         <div className='flex justify-center gap-2 my-5'>
                 <TextInput className='w-full' placeholder='Find Apartment... ' onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
-                <Button onClick={searchApartment}>Find</Button>
-                <Button onClick={clearSearch}>Clear</Button>
+                <Button gradientDuoTone="pinkToOrange" onClick={searchApartment}>Find</Button>
+                <Button gradientDuoTone="pinkToOrange" outline onClick={clearSearch}>Clear</Button>
         </div>
 
                 {currentUser.isAdmin && apartments.length > 0 ? (
