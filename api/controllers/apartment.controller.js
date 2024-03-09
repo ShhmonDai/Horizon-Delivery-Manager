@@ -23,7 +23,6 @@ export const create = async (req, res, next) => {
 export const getapartments = async (req, res, next) => {
     try {
         const startIndex = parseInt(req.query.startIndex) || 0;
-        const sortDirection = req.query.order === 'asc' ? 1 : -1;
         const apartments = await Apartment.find({
             ...(req.query.apartmentNumber && { apartmentNumber: req.query.apartmentNumber }),
             ...(req.query.packageLocation && { packageLocation: req.query.packageLocation }),
@@ -33,7 +32,7 @@ export const getapartments = async (req, res, next) => {
                     { apartmentNumber: { $regex: req.query.searchTerm, $options: 'i' } },
                 ],
             }),
-        }).sort({ updatedAt: sortDirection }).skip(startIndex);
+        }).sort({ apartmentNumber: 1 }).skip(startIndex);
         {/* $options 'i' = uppercase/lowercase is not important, get both results */ }
 
         {/* Full number of posts in database */ }
