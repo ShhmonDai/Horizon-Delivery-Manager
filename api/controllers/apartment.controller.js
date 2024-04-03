@@ -32,7 +32,7 @@ export const getapartments = async (req, res, next) => {
                     { apartmentNumber: { $regex: req.query.searchTerm, $options: 'i' } },
                 ],
             }),
-        }).sort({ apartmentNumber: 1 }).skip(startIndex);
+        }).sort({ apartmentNumber: 1 }).skip(startIndex).collation({locale:"en_US", numericOrdering: true});
         {/* $options 'i' = uppercase/lowercase is not important, get both results */ }
 
         {/* Full number of posts in database */ }
