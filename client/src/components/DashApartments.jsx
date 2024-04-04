@@ -1,8 +1,6 @@
 import { Modal, Table, Button, TextInput, Alert, Label } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import { set } from 'mongoose';
-import { Link, useParams, useNavigate } from 'react-router-dom';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 
@@ -19,9 +17,6 @@ export default function DashApartments() {
     const [showModalCreate, setShowModalCreate] = useState(false);
 
     const [apartmentIdToDelete, setApartmentIdToDelete] = useState('');
-    const [apartmentIdToUpdate, setApartmentIdToUpdate] = useState('');
-    const [apartmentNumToUpdate, setApartmentNumToUpdate] = useState('');
-
     const [apartmentToFind, setApartmentToFind] = useState('')
 
     const [formData, setFormData] = useState({});
@@ -29,7 +24,6 @@ export default function DashApartments() {
 
     const [publishError, setPublishError] = useState(null);
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchApartments = async () => {
@@ -46,7 +40,7 @@ export default function DashApartments() {
         if (currentUser.isAdmin) {
             fetchApartments();
         }
-    }, [currentUser._id, reload]);
+    }, [currentUser._id, reload, currentUser.isAdmin]);
 
     const searchApartment = () => {
         console.log(apartmentToFind);
@@ -59,7 +53,7 @@ export default function DashApartments() {
 
     const clearSearch = () => {
         reload ? setReload(false) : setReload(true);
- 
+        setApartmentToFind('');
     };
 
 
@@ -137,7 +131,7 @@ export default function DashApartments() {
         <div className='table-auto overflow-x-scroll md:mx-auto p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
 
         <div className='flex justify-center gap-2 my-5'>
-                <TextInput className='w-full' placeholder='Find Apartment... ' onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
+                <TextInput className='w-full' placeholder='Find Apartment... ' value={apartmentToFind} onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
                 <Button gradientDuoTone="pinkToOrange" onClick={searchApartment}>Find</Button>
                 <Button gradientDuoTone="pinkToOrange" outline onClick={clearSearch}>Clear</Button>
         </div>

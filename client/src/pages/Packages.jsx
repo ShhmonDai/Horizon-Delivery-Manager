@@ -1,7 +1,6 @@
 import { Modal, Table, Button, TextInput, Alert, Label } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useSelector } from 'react-redux';
-import { set } from 'mongoose';
 
 
 export default function Packages() {
@@ -32,7 +31,7 @@ export default function Packages() {
     if (currentUser.isAdmin) {
       fetchApartments();
     }
-  }, [currentUser._id, reload]);
+  }, [currentUser._id, reload, currentUser.isAdmin]);
 
   const searchApartment = () => {
     console.log(apartmentToFind);
@@ -47,8 +46,6 @@ export default function Packages() {
   const clearSearch = () => {
     reload ? setReload(false) : setReload(true);
     setApartmentToFind('');
-
-
   };
 
   const handleSubmit = async (e) => {
@@ -78,7 +75,7 @@ export default function Packages() {
   };
 
   return (
-    <div className='table-auto overflow-x-scroll md:mx-auto max-w-2xl p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    <div className='min-h-screen table-auto overflow-x-scroll md:mx-auto max-w-2xl p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
 
       <div className='flex justify-center gap-2 my-5'>
         <TextInput className='w-full' placeholder='Find Apartment... ' value={apartmentToFind} onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
