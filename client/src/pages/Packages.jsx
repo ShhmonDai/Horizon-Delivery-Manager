@@ -10,6 +10,7 @@ export default function Packages() {
   const [reload, setReload] = useState(false);
 
   const [showModalUpdate, setShowModalUpdate] = useState(false);
+  const [showModalDeliver, setShowModalDeliver] = useState(false);
   const [apartmentToFind, setApartmentToFind] = useState('')
 
   const [formData, setFormData] = useState({});
@@ -67,6 +68,8 @@ export default function Packages() {
       if (res.ok) {
         setPublishError(null);
         setShowModalUpdate(false);
+        setShowModalDeliver(false);
+        setShowModalDeliver(false);
         reload ? setReload(false) : setReload(true);
       }
     } catch (error) {
@@ -75,26 +78,30 @@ export default function Packages() {
   };
 
   return (
-    <div className='min-h-screen table-auto overflow-x-scroll md:mx-auto max-w-2xl p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    <div className='min-h-screen md:mx-auto max-w-2xl'>
 
-      <div className='flex justify-center gap-2 my-5'>
+      <div className='flex justify-center gap-2 my-5 p-3'>
         <TextInput className='w-full' placeholder='Find Apartment... ' value={apartmentToFind} onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
         <Button gradientDuoTone="pinkToOrange" onClick={searchApartment}>Find</Button>
         <Button gradientDuoTone="pinkToOrange" outline onClick={clearSearch}>Clear</Button>
       </div>
 
+      <div className='min-h-screen table-auto overflow-x-scroll md:mx-auto max-w-2xl p-3 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
+    
+
       {currentUser.isAdmin && apartments.length > 0 ? (
         <>
-          <Table hoverable className='shadow-md'>
+          <Table hoverable striped className='shadow-md'>
             <Table.Head>
-              <Table.HeadCell>Apartment</Table.HeadCell>
+              <Table.HeadCell>Apt</Table.HeadCell>
               <Table.HeadCell>Pkg Location</Table.HeadCell>
               <Table.HeadCell>Number of Pkgs</Table.HeadCell>
               <Table.HeadCell>Update</Table.HeadCell>
+              <Table.HeadCell>Mark As Delivered</Table.HeadCell>
             </Table.Head>
 
             {apartments.map((apartment) => (
-              <Table.Body className='divide-y' key={apartment.apartmentNumber}>
+              <Table.Body className="border-y-2 border-gray-100 dark:border-gray-700" key={apartment.apartmentNumber}>
                 <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
 
                   <Table.Cell>{apartment.apartmentNumber}</Table.Cell>
@@ -110,6 +117,18 @@ export default function Packages() {
                       className='font-medium text-cyan-500 hover:underline cursor-pointer'
                     >
                       Update
+                    </span>
+                  </Table.Cell>
+
+                  <Table.Cell>
+                    <span
+                      onClick={() => {
+                        setShowModalDeliver(true);
+                        setFormData({ ...formData, _id: apartment._id, packageLocation: '', packageAmount: ''});
+                      }}
+                      className='font-medium text-red-500 hover:underline cursor-pointer'
+                    >
+                      Deliver
                     </span>
                   </Table.Cell>
 
@@ -168,6 +187,42 @@ export default function Packages() {
         </Modal.Body>
       </Modal>
 
+      <Modal
+        show={showModalDeliver}
+        onClose={() => setShowModalDeliver(false)}
+        popup
+        size='md'
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <div className='text-center'>
+            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+              Are you sure you want to mark the package as delivered?
+            </h3>
+            <form onSubmit={handleSubmit}>
+
+              <div className='my-5 flex justify-center gap-4'>
+                <Button color='gray' type='submit'>
+                  Mark As Delivered
+                </Button>
+                <Button color='gray' onClick={() => setShowModalDeliver(false)}>
+                  Cancel
+                </Button>
+              </div>
+
+            </form>
+
+            {publishError && (
+              <Alert className='mt-5' color='failure'>
+                {publishError}
+              </Alert>
+            )}
+
+          </div>
+        </Modal.Body>
+      </Modal>
+
+      </div>
     </div>
   );
 }
