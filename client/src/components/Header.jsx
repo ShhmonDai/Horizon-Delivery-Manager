@@ -36,21 +36,15 @@ export default function Header() {
 
       <Navbar className='border-b-2 sticky top-0 z-40 backdrop-blur transition-all duration-500'>
         <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
-          <span className='px-2 py-1 bg-gradient-to-r from-pink-500 via-orange-500 to-red-500 rounded-lg text-white'>The Horizon</span>
+          <span className='mx-1 px-2 py-1 bg-gradient-to-r from-pink-500 via-orange-500 to-red-500 rounded-lg text-white'>The Horizon</span>
           Manager
         </Link>
-        <form>
-          <TextInput
-            type='text'
-            placeholder='Search...'
-            rightIcon={AiOutlineSearch}
-            className='hidden lg:inline'
-          />
-        </form>
 
+      <Link to='/packages'> 
         <Button className='w-12 h-10 lg:hidden' color='gray' pill>
           <AiOutlineSearch />
         </Button>
+      </Link>
 
         <div className='flex gap-2 md:order-2'>
           <Button className='w-12 h-10 hidden sm:inline' color='gray' pill onClick={() => dispatch(toggleTheme())}>
@@ -68,6 +62,11 @@ export default function Header() {
               <Link to={'/dashboard?tab=profile'}>
                 <Dropdown.Item>Profile</Dropdown.Item>
               </Link>
+              {currentUser.isAdmin && (
+              <Link to={'/dashboard?tab=apartments'}>
+                <Dropdown.Item>Dashboard</Dropdown.Item>
+              </Link> 
+              )}
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
             </Dropdown>
@@ -95,6 +94,12 @@ export default function Header() {
           {currentUser ? ( <Navbar.Link active={path === "/packages"} as={'div'}>
             <Link to='/packages'> Packages </Link>
           </Navbar.Link> ) : ( '' ) }
+        <Navbar.Link className='sm:hidden' as={'div'}>
+          <div className="flex gap-2 items-center" onClick={() => dispatch(toggleTheme())}>
+            THEME: {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          </div>
+        </Navbar.Link>
+
         </Navbar.Collapse>
 
       </Navbar>

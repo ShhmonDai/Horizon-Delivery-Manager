@@ -9,19 +9,14 @@ export default function FooterCom() {
 
                 <div className='grid-cols-2 w-full justify-around flex'>
 
-                    <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
-                        <span className='px-2 py-1 bg-gradient-to-r from-pink-500 via-orange-500 to-red-500 rounded-lg text-white'>The Horizon</span>
-                        Manager
-                    </Link>
-
 
                     <div className='mt-3'>
                         <Footer.Title title='About' />
                         <Footer.LinkGroup col>
-                            <Footer.Link href='https://www.shhmon.com' target='_blank' rel='noopener noreferrer'>
+                            <Footer.Link as={Link} to='/about'> 
                                 This Project
                             </Footer.Link>
-                            <Footer.Link href='https://www.shhmon.com' target='_blank' rel='noopener noreferrer'>
+                            <Footer.Link href='https://github.com/ShhmonDai/Horizon-Delivery-Manager' target='_blank' rel='noopener noreferrer'>
                                 Source Code
                             </Footer.Link>
                         </Footer.LinkGroup>
@@ -30,10 +25,10 @@ export default function FooterCom() {
                     <div className='mt-3'>
                         <Footer.Title title='The Horizon' />
                         <Footer.LinkGroup col>
-                            <Footer.Link href='https://www.shhmon.com' target='_blank' rel='noopener noreferrer'>
-                                Homepage
+                            <Footer.Link href='https://luxuryrentalsmanhattan.com/buildings/the-horizon' target='_blank' rel='noopener noreferrer'>
+                                About
                             </Footer.Link>
-                            <Footer.Link href='https://www.shhmon.com' target='_blank' rel='noopener noreferrer'>
+                            <Footer.Link href='https://www.google.com/maps/place/Horizon+Condominium/@40.7455495,-73.9739413,17z/data=!4m15!1m8!3m7!1s0x89c259ddc0c26745:0x96c0a626ab819dfa!2s415+E+37th+St,+New+York,+NY+10016!3b1!8m2!3d40.7455455!4d-73.9713664!16s%2Fg%2F11srw0vblc!3m5!1s0x89c2591ad4a06dd1:0x69b8e28729d5b291!8m2!3d40.7456772!4d-73.9711688!16s%2Fg%2F1tddt34w?entry=ttu' target='_blank' rel='noopener noreferrer'>
                                 Directions
                             </Footer.Link>
                         </Footer.LinkGroup>
