@@ -69,7 +69,6 @@ useEffect(() =>{
         setPublishError(null);
         setShowModalUpdate(false);
         setShowModalDeliver(false);
-        setShowModalDeliver(false);
         reload ? setReload(false) : setReload(true);
 
       }
@@ -101,6 +100,7 @@ useEffect(() =>{
                 <Table.HeadCell className='text-lg'> <BsBoxes /> </Table.HeadCell>
                 <Table.HeadCell>Update</Table.HeadCell>
                 <Table.HeadCell>Mark As Delivered</Table.HeadCell>
+                <Table.HeadCell>Date updated</Table.HeadCell>
               </Table.Head>
 
               {apartmentSearch.map((apartment) => (
@@ -134,6 +134,9 @@ useEffect(() =>{
                         Deliver
                       </span>
                     </Table.Cell>
+                    <Table.Cell>
+                      {new Date(apartment.updatedAt).toLocaleDateString()}
+                    </Table.Cell>
 
                   </Table.Row>
                 </Table.Body>
@@ -158,6 +161,7 @@ useEffect(() =>{
               <Table.HeadCell className='text-lg'> <BsBoxes /> </Table.HeadCell>
               <Table.HeadCell>Update</Table.HeadCell>
               <Table.HeadCell>Mark As Delivered</Table.HeadCell>
+              <Table.HeadCell>Date updated</Table.HeadCell>
             </Table.Head>
 
             {apartments.map((apartment) => (
@@ -180,7 +184,7 @@ useEffect(() =>{
                     </span>
                   </Table.Cell>
 
-                  <Table.Cell>
+                  <Table.Cell className="">
                     <span
                       onClick={() => {
                         setShowModalDeliver(true);
@@ -190,6 +194,9 @@ useEffect(() =>{
                     >
                       Deliver
                     </span>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {new Date(apartment.updatedAt).toLocaleDateString()}
                   </Table.Cell>
 
                 </Table.Row>
