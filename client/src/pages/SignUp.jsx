@@ -54,14 +54,15 @@ export default function SignUp() {
             <div className='flex p-3 max-w-4xl mx-auto flex-col md:flex-row md:items-top sm:gap-10 md:gap-20'>
                 {/* left side */}
                 <div className='flex-1'>
-                    <Link to="/" className='font-bold dark:text-white text-4xl'>
-                        <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
+                    <Link to="/" className='font-bold dark:text-white text-2xl sm:text-4xl'>
+                        <span className='px-2 py-1 bg-gradient-to-r from-pink-500 via-orange-500 to-red-500 rounded-lg text-white'>
                            The Horizon
                         </span>
                         Manager
                     </Link>
-                    <p className='text-sm mt-5'>
-                        This is a demo project. You can sign up with your email and password or with Google.
+                    <p className='text-sm mt-5 mb-10'>
+                        Welcome to Horizon Package Manager. You can sign up with your email and password or with Google account for initial access. For full access you have to wait for 
+                        permissions to be granted to your account by the administrator.
                     </p>
                 </div>
 
@@ -81,7 +82,7 @@ export default function SignUp() {
                             <Label value='Your passsword' />
                             <TextInput type='password' placeholder='********' id='password' onChange={handleChange} />
                         </div>
-                        <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
+                        <Button gradientDuoTone='pinkToOrange' type='submit' disabled={loading}>
                             {loading ? (
                                 <>
                                     <Spinner size='sm' />

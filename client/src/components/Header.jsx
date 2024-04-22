@@ -37,7 +37,7 @@ export default function Header() {
       <Navbar className='border-b-2 sticky top-0 z-40 backdrop-blur transition-all duration-500'>
         <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
           <span className='mx-1 px-2 py-1 bg-gradient-to-r from-pink-500 via-orange-500 to-red-500 rounded-lg text-white'>The Horizon</span>
-          Manager
+          <span className="hidden sm:inline">Manager</span>
         </Link>
 
       <Link to='/packages'> 

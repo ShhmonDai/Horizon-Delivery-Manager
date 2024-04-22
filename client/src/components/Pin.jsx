@@ -77,7 +77,7 @@ export default function Pin() {
 
               <TextInput type='password' id='password' placeholder='****' autoComplete='password' maxLength="4" onChange={handlePinChange}/>
             </div>
-              <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
+              <Button gradientDuoTone='pinkToOrange' type='submit' disabled={loading}>
                   {loading ? (
                       <>
                           <Spinner size='sm' />

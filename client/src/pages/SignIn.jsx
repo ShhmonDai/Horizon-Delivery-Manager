@@ -79,7 +79,7 @@ export default function SignIn() {
                             <Label value='Your passsword' />
                             <TextInput type='password' placeholder='********' id='password' onChange={handleChange} />
                         </div>
-                        <Button gradientDuoTone='purpleToPink' type='submit' disabled={loading}>
+                        <Button gradientDuoTone='pinkToOrange' type='submit' disabled={loading}>
                             {loading ? (
                                 <>
                                     <Spinner size='sm' />
