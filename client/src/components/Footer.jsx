@@ -1,5 +1,5 @@
 import { Footer } from "flowbite-react";
-import { BsFacebook, BsInstagram, BsTwitter, BsGithub } from 'react-icons/bs';
+import { BsLinkedin, BsInstagram, BsLaptop, BsGithub } from 'react-icons/bs';
 import { Link } from "react-router-dom";
 
 export default function FooterCom() {
@@ -40,12 +40,12 @@ export default function FooterCom() {
                 <Footer.Divider />
 
                 <div className='grid w-full sm:flex justify-center sm:justify-around'>
-                    <Footer.Copyright href='#' by="Szymon Pozniewski" year={new Date().getFullYear()} />
+                    <Footer.Copyright href='#' by="Szymon's blog" year={new Date().getFullYear()} />
                     <div className='flex gap-6 mt-4 sm:mt-0'>
-                        <Footer.Icon href='#' icon={BsFacebook} />
-                        <Footer.Icon href='#' icon={BsGithub} />
-                        <Footer.Icon href='#' icon={BsTwitter} />
-                        <Footer.Icon href='#' icon={BsInstagram} />
+                        <Footer.Icon href='https://www.linkedin.com/in/shhmon/' target='_blank' rel='noopener noreferrer' icon={BsLinkedin} />
+                        <Footer.Icon href='https://github.com/ShhmonDai' target='_blank' rel='noopener noreferrer' icon={BsGithub} />
+                        <Footer.Icon href='https://www.shhmon.com' target='_blank' rel='noopener noreferrer' icon={BsLaptop} />
+                        <Footer.Icon href='https://instagram.com/shh.mon' target='_blank' rel='noopener noreferrer' icon={BsInstagram} />
                     </div>
                 </div>
 
