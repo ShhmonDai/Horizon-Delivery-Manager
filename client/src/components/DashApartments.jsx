@@ -201,7 +201,7 @@ export default function DashApartments() {
                     <>
                         <Table hoverable striped className='shadow-md'>
                             <Table.Head>
-                                <Table.HeadCell>Apartment</Table.HeadCell>
+                                <Table.HeadCell>APT</Table.HeadCell>
                                 <Table.HeadCell className='text-lg'>  <BsFillHouseFill /> </Table.HeadCell>
                                 <Table.HeadCell className='text-lg'> <BsBoxes /> </Table.HeadCell>
                                 <Table.HeadCell>Update</Table.HeadCell>

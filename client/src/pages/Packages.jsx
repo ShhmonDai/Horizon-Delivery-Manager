@@ -18,7 +18,7 @@ export default function Packages() {
   const [formData, setFormData] = useState({});
   const [publishError, setPublishError] = useState(null);
 
-
+{/* Fetch Apartments useEffect */ }
   useEffect(() => {
     const fetchApartments = async () => {
       try {
@@ -37,6 +37,7 @@ export default function Packages() {
     }
   }, [currentUser._id, reload, currentUser.isAdmin, currentUser.isWorker]);
 
+{/* Search useEffect */ }  
 useEffect(() =>{
   const handleSearch = (e) => {
     const apartmentsCopy = apartments;
@@ -48,7 +49,7 @@ useEffect(() =>{
 
 }, [apartmentToFind, apartments] );
 
-
+{/* Submit function for updates */ }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -81,13 +82,14 @@ useEffect(() =>{
   return (
     <div className='min-h-screen md:mx-auto max-w-2xl'>
 
+      {/* Search Input */}
       <div className='flex justify-center gap-2 my-5 p-3'>
         <TextInput className='w-full' placeholder='Find Apartment... ' value={apartmentToFind} onChange={(e) => setApartmentToFind(((e.target.value).toUpperCase()))} />
       </div>
 
       <div className='min-h-screen table-auto overflow-x-scroll md:mx-auto max-w-2xl p-1 scrollbar scrollbar-track-slate-100 scrollbar-thumb-slate-300 dark:scrollbar-track-slate-700 dark:scrollbar-thumb-slate-500'>
 
-      {/* Search Results Table */}
+      {/* Search Results Table, becomes visible if search found a result */}
         {(currentUser.isAdmin || currentUser.isWorker) && apartmentSearch.length > 0 ? (
           <div className="mb-10">
 
@@ -206,10 +208,10 @@ useEffect(() =>{
 
         </>
       ) : (
-        <p>There are no apartments!</p>
+            (currentUser.isAdmin || currentUser.isWorker) ? <p>There are no apartments!</p> : <p>You are not authorized to organize the packages, contact the administrator to be granted permission</p>
       )}
 
-
+      {/* Modal for updating apartments */}
       <Modal
         show={showModalUpdate}
         onClose={() => setShowModalUpdate(false)}
@@ -254,6 +256,7 @@ useEffect(() =>{
         </Modal.Body>
       </Modal>
 
+      {/* Modal to mark packages as delivered */}      
       <Modal
         show={showModalDeliver}
         onClose={() => setShowModalDeliver(false)}
