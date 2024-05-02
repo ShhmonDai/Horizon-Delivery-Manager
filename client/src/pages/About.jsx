@@ -42,6 +42,16 @@ export default function About() {
 
                     </div>
                 </div>
+
+                {/* Homepage Banner - under the navbar image */}
+                <div className="w-auto mt-20 relative transition-all duration-300">
+                    <img className='w-full dark:hidden' src='/Worker.png' alt='worker image' />
+                    <img className='w-full hidden dark:inline' src='/WorkerNight.png' alt='worker night' />
+
+                </div>
+
+
+
             </div>
         </div>
     );

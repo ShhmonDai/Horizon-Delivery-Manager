@@ -91,11 +91,11 @@ useEffect(() =>{
 
       {/* Search Results Table, becomes visible if search found a result */}
         {(currentUser.isAdmin || currentUser.isWorker) && apartmentSearch.length > 0 ? (
-          <div className="mb-10">
+          <div className="mb-10 p-3">
 
             <div className="font-bold"> Search Results: </div>
             
-            <Table hoverable striped className='shadow-md'>
+            <Table hoverable striped className='shadow-md shadow-lg shadow-slate-500 dark:shadow-[1px_5px_20px_-5px_rgb(250,250,250,0.5)]'>
               <Table.Head>
                 <Table.HeadCell>Apt</Table.HeadCell>
                 <Table.HeadCell className='text-lg'>  <BsFillHouseFill /> </Table.HeadCell>
@@ -156,7 +156,7 @@ useEffect(() =>{
         <>
 
           <div className="font-bold">All Apartments:</div>
-          <Table hoverable striped className='shadow-md'>
+          <Table hoverable striped className='shadow-lg mb-20'>
             <Table.Head>
               <Table.HeadCell>Apt</Table.HeadCell>
               <Table.HeadCell className='text-lg'>  <BsFillHouseFill /> </Table.HeadCell>
