@@ -40,7 +40,7 @@ export default function FooterCom() {
                 <Footer.Divider />
 
                 <div className='grid w-full sm:flex justify-center sm:justify-around'>
-                    <Footer.Copyright href='#' by="Szymon's blog" year={new Date().getFullYear()} />
+                    <Footer.Copyright href='#' by="Szymon Pozniewski" year={new Date().getFullYear()} />
                     <div className='flex gap-6 mt-4 sm:mt-0'>
                         <Footer.Icon href='https://www.linkedin.com/in/shhmon/' target='_blank' rel='noopener noreferrer' icon={BsLinkedin} />
                         <Footer.Icon href='https://github.com/ShhmonDai' target='_blank' rel='noopener noreferrer' icon={BsGithub} />
