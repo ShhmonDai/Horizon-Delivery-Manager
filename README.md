@@ -28,4 +28,10 @@ The workers would also spend up to several minutes trying to find the specific d
 
 
 ## 🍿 Screenshots
+![A1](https://github.com/user-attachments/assets/6e88981e-abb6-49ed-9b45-ec882214924c)
+![A7](https://github.com/user-attachments/assets/e8926c2e-774e-487d-9d97-5a2d476f2581)
+![A6](https://github.com/user-attachments/assets/4105a5a2-996b-42d5-981b-26f6c711e0be)
+![A5](https://github.com/user-attachments/assets/44d2f6c6-0092-4306-bda6-7075c153ed53)
+
+
 
