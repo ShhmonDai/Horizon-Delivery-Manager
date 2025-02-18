@@ -1,5 +1,5 @@
 <h1 align='center'>Welcome to Horizon Delivery Manager</h1>
-<h2 align='center'>A Package manager to simplify organization and package lookup for a busy 400 apartment building.</h2>
+<h2 align='center'>A Package manager to simplify organization and package location lookup for a busy 400 apartment building.</h2>
 
 &nbsp;
 
