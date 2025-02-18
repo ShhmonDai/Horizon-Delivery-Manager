@@ -3,8 +3,8 @@
 
 &nbsp;
 
-<p>Horizon Delivery Manager was created by my when I noticed my work did not have a way to track the location of incoming deliveries and packages. The BuildingLink that the company used was clunky to use and could only show which room the specific package was located in. This resulted in the workers avoiding using the app to look up the delivery details and 
-they would spend up to several minutes trying to find the specific delivery among hundreds of other packages. The building has over 400 apartments so there would be a constant stream of deliveries and constant stream of people coming to pick up their stuff. So it was a great inconvienience for everyone when the workers spent minutes searching for a single item.</p>
+<p>Horizon Delivery Manager was created by me when I noticed my work did not have a way to track the location of incoming deliveries and packages. The BuildingLink that the company used was clunky to use and could only show which room the specific package was located in. This resulted in the workers avoiding using the app to look up any of the delivery details. 
+The workers would also spend up to several minutes trying to find the specific delivery among hundreds of other packages. Keep in mind the building has over 400 apartments so there would be a constant stream of deliveries and constant stream of people coming to pick up their stuff. It was a great inconvienience for everyone when the workers spent minutes searching for a single item.</p>
            
 &nbsp;
 ## 📚 Issues for Delivery Manager to solve
