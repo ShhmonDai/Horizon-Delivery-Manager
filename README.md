@@ -10,7 +10,7 @@ The workers would also spend up to several minutes trying to find the specific d
 ## 📚 Issues for Delivery Manager to solve
 - Elderly Hallman Workers refused to use BuildingLink app to check package details (Type and Number of packages) due to complex, hard to see and use UI/UX
 - Inefficient login system during busy and fast paced work where several workers shared access to devices
-- No abiltiy to track package location within package room 
+- No abiltiy to track package location within package room. Workers sometimes spent minutes looking through the whole room for an item. 
 
 ## 🧠 Delivery Manager accomplishments:  
 - Improved package lookup times from O(N) to O(1), saving up to several minutes of time per package look up by introducing ability to organize packages by shelf number.
@@ -24,4 +24,8 @@ The workers would also spend up to several minutes trying to find the specific d
 - Ability to add shelf locations of packages
 - Easy search bar for package lookups
 - PIN based shared account login
-- Simple and easy UI/UX 
+- Simple and easy UI/UX
+
+
+## 🍿 Screenshots
+
