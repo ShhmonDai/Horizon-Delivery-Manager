@@ -74,6 +74,7 @@ export default function DashUsers() {
                             <Table.Head>
                                 <Table.HeadCell>Date created</Table.HeadCell>
                                 <Table.HeadCell>User image</Table.HeadCell>
+                                <Table.HeadCell>ID</Table.HeadCell>
                                 <Table.HeadCell>Username</Table.HeadCell>
                                 <Table.HeadCell>Email</Table.HeadCell>
                                 <Table.HeadCell>Admin</Table.HeadCell>
@@ -93,6 +94,7 @@ export default function DashUsers() {
                                                 className='w-10 h-10 object-cover bg-gray-500 rounded-full'
                                             />
                                         </Table.Cell>
+                                        <Table.Cell>{user._id}</Table.Cell>
                                         <Table.Cell>{user.username}</Table.Cell>
                                         <Table.Cell>{user.email}</Table.Cell>
                                         <Table.Cell>

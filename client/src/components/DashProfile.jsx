@@ -191,19 +191,40 @@ export default function DashProfile() {
 
                 {imageFileUploadError && <Alert color='failure'>{imageFileUploadError}</Alert>}
 
-                    <TextInput color='gray' type='text' id='username' placeholder='username' defaultValue={currentUser.username} onChange={handleChange} />
-                    <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange} />
-                    <TextInput type='password' id='password' placeholder='password' autoComplete='password' onChange={handleChange} />
-                    <Button type='submit' gradientDuoTone="pinkToOrange" disabled={loading || imageFileUploading}>
+                {currentUser.email == 'demo@demo.com' ?
+                    <>
+                        <TextInput color='gray' type='text' id='username' placeholder='username' defaultValue={currentUser.username} disabled={currentUser.email == 'demo@demo.com'} />
+                        <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} disabled={currentUser.email == 'demo@demo.com'} />
+                        <TextInput type='password' id='password' placeholder='password' autoComplete='password' disabled={currentUser.email == 'demo@demo.com'} />
+                    </>
+                    :
+                    <>
+                        <TextInput color='gray' type='text' id='username' placeholder='username' defaultValue={currentUser.username} onChange={handleChange} disabled={currentUser.email == 'demo@demo.com'} />
+                        <TextInput type='email' id='email' placeholder='email' defaultValue={currentUser.email} onChange={handleChange} disabled={currentUser.email == 'demo@demo.com'} />
+                        <TextInput type='password' id='password' placeholder='old password' autoComplete='old password' onChange={handleChange} disabled={currentUser.email == 'demo@demo.com'} />
+                        <TextInput type='password' id='passwordnew' placeholder='new password' autoComplete='new password' onChange={handleChange} disabled={currentUser.email == 'demo@demo.com'} />
+                    </>
+                }
+
+                {currentUser.email == 'demo@demo.com' ?
+                    <Button type='button' gradientDuoTone="pinkToOrange" outline disabled={loading || imageFileUploading || currentUser.email == 'demo@demo.com'}>
                         {loading || imageFileUploading ? 'Loading...' : 'Update'}
                     </Button>
+                    :
+                    <Button type='submit' gradientDuoTone="pinkToOrange" outline disabled={loading || imageFileUploading || currentUser.email == 'demo@demo.com'}>
+                        {loading || imageFileUploading ? 'Loading...' : 'Update'}
+                    </Button>
+                }
+
 
 
 
 
             </form>
             <div className='text-red-500 flex justify-between mt-5'>
-                <span onClick={() => setShowModal(true)} className='cursor-pointer'>Delete Account</span>
+                {currentUser.email == 'demo@demo.com' ? <span className='line-through'>Delete Account</span> :
+                    <span onClick={() => setShowModal(true)} className='cursor-pointer'>Delete Account</span>
+                }
                 <span onClick={handleSignout} className='cursor-pointer'>Sign Out</span>
             </div>
             {updateUserSuccess && (<Alert color='success' className='mt-5'>
