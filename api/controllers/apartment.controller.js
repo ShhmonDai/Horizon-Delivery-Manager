@@ -47,6 +47,17 @@ export const getapartments = async (req, res, next) => {
     }
 };
 
+export const getpackagehistory = async (req, res, next) => {
+    try {
+        const apartment = await Apartment.findById(req.params.apartmentNumber).select('apartmentNumber packageHistory');
+        if (!apartment) return next(errorHandler(404, 'Apartment not found'));
+
+        res.status(200).json(apartment.packageHistory);
+    } catch (error) {
+        next(error);
+    }
+};
+
 export const deleteapartment = async (req, res, next) => {
     if (!req.user.isAdmin) {
         return next(errorHandler(403, 'You are not allowed to delete apartments'));
@@ -76,6 +87,51 @@ export const updateapartment = async (req, res, next) => {
             { new: true }
         );
         res.status(200).json(updatedApartment);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const markasdelivered = async (req, res, next) => {
+    if (!(req.user.isAdmin || req.user.isWorker)) {
+        return next(errorHandler(403, 'You are not allowed to mark as delivered.'));
+    }
+
+    try {
+        const apartment = await Apartment.findById(req.params.apartmentNumber);
+        if (!apartment) return next(errorHandler(404, 'Apartment not found'));
+
+        apartment.packageHistory.push({
+            deliveredBy: req.user.username, // or req.user.id
+            deliveredAt: new Date(),
+            amount: apartment.packageAmount,
+            location: apartment.packageLocation,
+        });
+
+        // Reset package info after delivery
+        apartment.packageAmount = '';
+        apartment.packageLocation = '';
+
+        await apartment.save();
+
+        res.status(200).json(apartment);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const deliverall = async (req, res, next) => {
+    if (!(req.user.isAdmin || req.user.isWorker)) {
+        return next(errorHandler(403, 'You are not allowed to update apartments'));
+    }
+    try {
+        await Apartment.updateMany({}, {
+            $set: {
+                packageLocation: '',
+                packageAmount: ''
+            }
+        });
+        res.status(200).json({ message: 'All apartments updated successfully' });
     } catch (error) {
         next(error);
     }

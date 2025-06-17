@@ -15,6 +15,14 @@ const apartmentSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
+        packageHistory: [
+            {
+                deliveredBy: { type: String, required: true }, // worker name or ID
+                deliveredAt: { type: Date, default: Date.now },
+                amount: { type: Number }, // how many packages were delivered at that time
+                location: { type: String }, // where they were picked up from, optional
+            },
+          ],
     }, { timestamps: true }
 );
 
