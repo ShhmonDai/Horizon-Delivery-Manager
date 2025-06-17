@@ -64,6 +64,15 @@ export default function SignUp() {
                         Welcome to Horizon Package Manager. You can sign up with your email and password or with Google account for initial access. For full access you have to wait for 
                         permissions to be granted to your account by the administrator.
                     </p>
+
+                    <p className='text-center lg:text-left text-sm mt-5 font-bold mb-20'>
+                        For a preview: A Demo Account has already been created. Available at the
+                        <span className="px-1">
+                            <Link to='/sign-in' className='text-blue-500'>
+                                Sign In
+                            </Link> page.
+                        </span>
+                    </p>
                 </div>
 
 
@@ -93,7 +102,7 @@ export default function SignUp() {
                         </Button>
                         <OAuth />
                     </form>
-                    <div className='flex gap-2 text-sm mt-5'>
+                    <div className='flex gap-2 text-sm mt-5 mb-20'>
                         <span>Have an account?</span>
                         <Link to='/sign-in' className='text-blue-500'>
                             Sign In

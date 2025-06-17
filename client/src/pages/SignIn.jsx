@@ -21,6 +21,7 @@ export default function SignIn() {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
     };
+
     const handleSubmit = async (e) => {
 
         e.preventDefault();
@@ -47,7 +48,7 @@ export default function SignIn() {
 
             if (res.ok) {
                 dispatch(signInSuccess(data));
-                navigate('/');
+                navigate('/packages');
             }
 
         } catch (error) {
@@ -55,6 +56,36 @@ export default function SignIn() {
             dispatch(signInFailure(error.message));
         }
     };
+
+    const handleDemo = async () => {
+
+        try {
+            setErrorMessageAlert(null);
+            dispatch(signInStart());
+            const res = await fetch('/api/auth/signindemo', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: 'demo@demo.com' }),
+            });
+
+            const data = await res.json();
+            if (data.success === false) {
+                setErrorMessageAlert(data.message);
+                dispatch(signInFailure(data.message));
+            }
+
+
+            if (res.ok) {
+                dispatch(signInSuccess(data));
+                navigate('/packages');
+            }
+
+        } catch (error) {
+            setErrorMessageAlert(error.message);
+            dispatch(signInFailure(error.message));
+        }
+    };
+    
 
 
     return (
@@ -96,6 +127,8 @@ export default function SignIn() {
                             Sign Up
                         </Link>
                     </div>
+                    
+
                     {errorMessageAlert && (
                         <Alert className='mt-5' color='failure' onDismiss={() => clearAlert()}>
                             {errorMessageAlert}
@@ -104,7 +137,32 @@ export default function SignIn() {
                     }
                 </div>
 
+                
+
             </div>
+
+            {/* Demo Account*/}
+            <div className="flex justify-center">
+                <div className="max-w-lg mt-10 mb-20 flex flex-col px-3">
+                    <p className='text-4xl font-semibold my-4 text-center'>
+                        Try the Demo Account
+                    </p>
+                    <span className='mt-4 mb-2' >One-Click Demo Sign-In:</span>
+
+                    <Button gradientDuoTone="purpleToBlue" type='submit' disabled={loading} onClick={() => {
+                        handleDemo();
+                    }} className="my-2">
+                        {loading ? (
+                            <>
+                                <Spinner size='sm' />
+                                <span className='pl-3'>Loading...</span>
+                            </>
+                        ) : ('Demo Account Sign In'
+                        )}
+                    </Button>
+                </div>  
+            </div>   
+
         </div>
 
     )
